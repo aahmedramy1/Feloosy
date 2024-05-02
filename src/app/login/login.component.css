@@ -1,0 +1,49 @@
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login_container {
+  height: 100%;
+  background-color: #181d5d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_container img {
+  height: 150px;
+  object-fit: contain;
+
+}
+
+.login_container mat-card {
+  width: 20%;
+  padding: 1rem 0;
+}
+
+
+
+
