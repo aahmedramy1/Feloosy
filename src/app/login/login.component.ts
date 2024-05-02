@@ -5,11 +5,12 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatCardModule, MatFormFieldModule, NgIf, ReactiveFormsModule, MatInput, MatButton, NgOptimizedImage],
+  imports: [MatCardModule, MatFormFieldModule, NgIf, ReactiveFormsModule, MatInput, MatButton, NgOptimizedImage, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

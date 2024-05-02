@@ -24,7 +24,7 @@ mat-card-content {
   justify-content: flex-end;
 }
 
-.login_container {
+.signup_container {
   height: 100%;
   background-color: #181d5d;
   display: flex;
@@ -33,22 +33,21 @@ mat-card-content {
   align-items: center;
 }
 
-.login_container img {
+.signup_container img {
   height: 150px;
   width: auto;
   object-fit: contain;
 
 }
 
-.login_container mat-card {
+.signup_container mat-card {
   width: 20%;
   padding: 1rem 0;
 }
 
-.register {
+.login {
   margin-top: 1rem;
   font-size: 0.8rem
 }
-
 
 

@@ -1,12 +1,18 @@
-<div class="login_container">
+<div class="signup_container">
   <img ngSrc="assets/logo.jpeg" priority alt="Logo" height="682" width="1222">
   <mat-card >
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title>Signup</mat-card-title>
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <p>
           <mat-form-field>
             <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Email" formControlName="email">
           </mat-form-field>
         </p>
 
@@ -21,10 +27,10 @@
         </p>
 
         <div class="button">
-          <button type="submit" mat-button>Login</button>
+          <button type="submit" mat-button>Signup</button>
         </div>
-        <div class="register">
-          Don't have an account? <a routerLink="/signup">Register</a>
+        <div class="login">
+          Have an account? <a routerLink="/login">Login</a>
         </div>
 
       </form>
