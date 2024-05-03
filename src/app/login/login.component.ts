@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgIf, NgOptimizedImage} from "@angular/common";
@@ -6,6 +6,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -20,9 +21,18 @@ export class LoginComponent {
     password: new FormControl(''),
   });
 
+  authService = inject(AuthService)
+
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.authService.login(
+        this.form.value.username,
+        this.form.value.password
+      ).then((response) => {
+          console.log("user logged in successfully")
+          console.log(response)
+        }
+      )
     }
   }
 

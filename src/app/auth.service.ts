@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, updateProfile} from "@angular/fire/auth";
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from "@angular/fire/auth";
 import {from} from "rxjs";
 
 @Injectable({
@@ -17,6 +17,16 @@ export class AuthService {
       });
     } catch (error) {
       console.error('Error during registration:', error);
+      throw error; // Rethrow to make sure it propagates to the caller
+    }
+  }
+
+  async login(email: string, password: string): Promise<any> {
+    try {
+      const response = await signInWithEmailAndPassword(this.firebaseAuth, email, password);
+      return response.user
+    } catch (error) {
+      console.error('Error during login:', error);
       throw error; // Rethrow to make sure it propagates to the caller
     }
   }
