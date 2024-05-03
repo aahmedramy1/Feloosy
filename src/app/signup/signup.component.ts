@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
@@ -6,6 +6,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-signup',
@@ -32,10 +33,17 @@ export class SignupComponent {
     email: new FormControl(''),
     password: new FormControl(''),
   });
+  authService = inject(AuthService)
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.authService.register(
+        this.form.value.email,
+        this.form.value.username,
+        this.form.value.password
+      ).then(() => {
+        console.log("user created successfully")
+      })
     }
   }
 
