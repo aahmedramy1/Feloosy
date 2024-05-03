@@ -30,7 +30,6 @@ export class LoginComponent {
         this.form.value.password
       ).then((response) => {
           console.log("user logged in successfully")
-          console.log(response)
         }
       )
     }
