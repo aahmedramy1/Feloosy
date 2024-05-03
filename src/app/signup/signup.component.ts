@@ -7,6 +7,7 @@ import {MatInput} from "@angular/material/input";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-signup',
@@ -35,6 +36,9 @@ export class SignupComponent {
   });
   authService = inject(AuthService)
 
+  constructor(private snackBar: MatSnackBar) {
+  }
+
   submit() {
     if (this.form.valid) {
       this.authService.register(
@@ -42,9 +46,15 @@ export class SignupComponent {
         this.form.value.username,
         this.form.value.password
       ).then(() => {
-        console.log("user created successfully")
+         this.openSnackBar('User registered successfully')
       })
     }
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+        duration: 3000,
+      });
   }
 
   @Input() error: string | undefined;
