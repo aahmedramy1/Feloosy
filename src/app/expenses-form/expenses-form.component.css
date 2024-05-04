@@ -25,3 +25,7 @@ mat-card {
 mat-card-content {
   padding: 0;
 }
+
+mat-form-field {
+  width: 100%;
+}
