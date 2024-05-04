@@ -14,6 +14,7 @@ import {
   MatDatepickerModule,
 } from "@angular/material/datepicker";
 import moment from 'moment';
+import { MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'app-expenses-form',
@@ -32,6 +33,7 @@ import moment from 'moment';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   templateUrl: './expenses-form.component.html',
   styleUrl: './expenses-form.component.css'
@@ -43,6 +45,15 @@ export class ExpensesFormComponent {
     description: new FormControl(''),
     monthYear: new FormControl(moment())
   });
+
+  categories: any[] = [
+    {value: "1", viewValue: 'Rent'},
+    {value: '2', viewValue: 'Insurances'},
+    {value: '3', viewValue: 'Utilities'},
+    {value: '4', viewValue: 'Food'},
+    {value: '5', viewValue: 'Others'},
+  ];
+  selected = this.categories[0].value;
 
 
   setMonthAndYear(normalizedMonthAndYear: any, datepicker: MatDatepicker<any>) {
@@ -60,6 +71,7 @@ export class ExpensesFormComponent {
   async onSubmit() {
     let expense = this.form.value;
     expense.monthYear = expense.monthYear.toISOString()
+    expense.category = this.selected
     await this.expensesService.addNewExpense(expense);
     this.openSnackBar('Expense added successfully');
     this.form.reset();

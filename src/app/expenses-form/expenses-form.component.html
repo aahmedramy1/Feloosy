@@ -19,6 +19,14 @@
           Please enter a valid number.
         </div>
         <mat-form-field>
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            @for (category of categories; track category) {
+              <mat-option [value]="category.value">{{category.viewValue}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
           <input
             matInput
             placeholder="Description"
