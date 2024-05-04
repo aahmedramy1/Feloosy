@@ -9,9 +9,10 @@ export class ExpensesService {
   firestore = inject(Firestore)
   constructor(private authService: AuthService) { }
 
-  async addNewExpense(expense: { amount: number, description: string, date: Date }) {
+  async addNewExpense(expense: any) {
     const currentUser = this.authService.getCurrentUser()
     let expensesRef = collection(this.firestore, `users/${currentUser.uid}/expenses`);
+    expense.createdAt = new Date();
     await addDoc(expensesRef, expense);
   }
 

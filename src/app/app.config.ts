@@ -6,9 +6,22 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 
 const firebaseConfig = {
 }
+
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,6 +31,7 @@ export const appConfig: ApplicationConfig = {
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideAuth(() => getAuth()),
       provideFirestore(() => getFirestore())
-    ])
+    ]),
+    provideMomentDateAdapter(MY_FORMATS)
   ]
 };
