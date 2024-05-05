@@ -3,36 +3,47 @@ import {MatButton} from "@angular/material/button";
 import {ExpensesService} from "../expenses.service";
 import {RouterLink} from "@angular/router";
 import {MatTableModule} from '@angular/material/table';
+import {MatOption} from "@angular/material/autocomplete";
+import {MatFormField, MatLabel, MatSelect} from "@angular/material/select";
 @Component({
   selector: 'app-expenses',
   standalone: true,
   imports: [
     MatButton,
     RouterLink,
-    MatTableModule
+    MatTableModule,
+    MatOption,
+    MatSelect,
+    MatFormField,
+    MatLabel
   ],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.css'
 })
 export class ExpensesComponent {
   categories = [
+      {value: undefined, viewValue: 'All'},
       {value: "1", viewValue: 'Rent'},
       {value: '2', viewValue: 'Insurances'},
       {value: '3', viewValue: 'Utilities'},
       {value: '4', viewValue: 'Food'},
       {value: '5', viewValue: 'Others'},
   ];
+  selected = undefined
 
   expensesService = inject(ExpensesService)
   displayedColumns: string[] = ['amount', 'category','description', 'monthYear', 'isRecurring'];
   dataSource: any = [];
+  expenses: any = [];
 
   constructor() {
      this.fetchExpenses().catch(console.error)
   }
 
   async fetchExpenses() {
-    this.dataSource = await this.expensesService.getUserExpenses();
+    let expenses = await this.expensesService.getUserExpenses();
+    this.dataSource = expenses;
+    this.expenses = expenses;
   }
 
    formatDate(dateString: string) {
@@ -46,5 +57,12 @@ export class ExpensesComponent {
 
   getCategory(value: string) {
     return this.categories.find(category => category.value === value)?.viewValue;
+  }
+  onCategoryChange(event: any) {
+    if (event === undefined) {
+      this.expenses = this.dataSource;
+      return;
+    }
+    this.expenses = this.dataSource.filter((expense: any) => expense.category === event);
   }
 }

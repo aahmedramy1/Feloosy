@@ -1,6 +1,16 @@
 <div class="container">
-  <button mat-flat-button color="secondary" routerLink="/expenses/new">Add Expense</button>
-  <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+  <div class="buttons">
+    <mat-form-field>
+      <mat-label>Filter by Category</mat-label>
+      <mat-select [(value)]="selected" (selectionChange)="onCategoryChange($event.value)">
+        @for (category of categories; track category) {
+          <mat-option [value]="category.value">{{category.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="secondary" routerLink="/expenses/new">Add Expense</button>
+  </div>
+  <table mat-table  [dataSource]="expenses" class="mat-elevation-z8">
 
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef> Amount </th>
