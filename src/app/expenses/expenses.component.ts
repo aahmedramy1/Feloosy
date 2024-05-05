@@ -35,8 +35,6 @@ export class ExpensesComponent {
     this.dataSource = await this.expensesService.getUserExpenses();
   }
 
-  protected readonly Date = Date;
-
    formatDate(dateString: string) {
 
     let date = new Date(dateString);
