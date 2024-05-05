@@ -5,8 +5,14 @@ import {ExpensesComponent} from "./expenses/expenses.component";
 import {ExpensesFormComponent} from "./expenses-form/expenses-form.component";
 import {IncomeComponent} from "./income/income.component";
 import {IncomeFormComponent} from "./income-form/income-form.component";
+import {HomeComponent} from "./home/home.component";
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    title: "Home"
+  },
   {
     path: 'login',
     component: LoginComponent,

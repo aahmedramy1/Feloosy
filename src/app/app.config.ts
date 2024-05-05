@@ -7,6 +7,7 @@ import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+import {provideCharts, withDefaultRegisterables} from "ng2-charts";
 
 const firebaseConfig = {
 }
@@ -32,6 +33,7 @@ export const appConfig: ApplicationConfig = {
       provideAuth(() => getAuth()),
       provideFirestore(() => getFirestore())
     ]),
-    provideMomentDateAdapter(MY_FORMATS)
+    provideMomentDateAdapter(MY_FORMATS),
+    provideCharts(withDefaultRegisterables())
   ]
 };

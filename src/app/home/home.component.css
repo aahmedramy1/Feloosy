@@ -1,0 +1,13 @@
+.container {
+  padding-top: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.chart_container {
+  display: flex;
+  gap: 3rem;
+}
+
+.chart_container div {
+  flex: 1
+}
