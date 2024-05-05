@@ -5,7 +5,7 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../auth.service";
 
 @Component({
@@ -23,13 +23,16 @@ export class LoginComponent {
 
   authService = inject(AuthService)
 
+  constructor(private router: Router) {
+  }
+
   submit() {
     if (this.form.valid) {
       this.authService.login(
         this.form.value.username,
         this.form.value.password
-      ).then((response) => {
-          console.log("user logged in successfully")
+      ).then(async (response) => {
+          await this.router.navigate(['/']);
         }
       )
     }
