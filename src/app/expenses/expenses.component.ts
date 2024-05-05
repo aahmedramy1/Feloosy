@@ -24,7 +24,7 @@ export class ExpensesComponent {
   ];
 
   expensesService = inject(ExpensesService)
-  displayedColumns: string[] = ['amount', 'category','description', 'monthYear'];
+  displayedColumns: string[] = ['amount', 'category','description', 'monthYear', 'isRecurring'];
   dataSource: any = [];
 
   constructor() {

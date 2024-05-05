@@ -15,6 +15,7 @@ import {
 } from "@angular/material/datepicker";
 import moment from 'moment';
 import { MatSelectModule} from "@angular/material/select";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-expenses-form',
@@ -34,6 +35,7 @@ import { MatSelectModule} from "@angular/material/select";
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatCheckbox,
   ],
   templateUrl: './expenses-form.component.html',
   styleUrl: './expenses-form.component.css'
@@ -43,7 +45,8 @@ export class ExpensesFormComponent {
   form: FormGroup = new FormGroup({
     amount: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
     description: new FormControl(''),
-    monthYear: new FormControl(moment())
+    monthYear: new FormControl(moment()),
+    isRecurring: new FormControl(false),
   });
 
   categories: any[] = [
