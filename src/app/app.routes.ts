@@ -3,6 +3,8 @@ import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
 import {ExpensesComponent} from "./expenses/expenses.component";
 import {ExpensesFormComponent} from "./expenses-form/expenses-form.component";
+import {IncomeComponent} from "./income/income.component";
+import {IncomeFormComponent} from "./income-form/income-form.component";
 
 export const routes: Routes = [
   {
@@ -24,5 +26,15 @@ export const routes: Routes = [
     path: "expenses/new",
     component: ExpensesFormComponent,
     title: "New Expense"
+  },
+  {
+    path: "income",
+    component: IncomeComponent,
+    title: "Income"
+  },
+  {
+    path: "income/new",
+    component: IncomeFormComponent,
+    title: "New Income"
   }
 ];

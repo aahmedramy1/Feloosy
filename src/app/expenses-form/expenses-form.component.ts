@@ -58,7 +58,6 @@ export class ExpensesFormComponent {
 
   setMonthAndYear(normalizedMonthAndYear: any, datepicker: MatDatepicker<any>) {
 
-    // const ctrlValue = this.date.value ?? moment();
     const ctrlValue = this.form.get('monthYear')?.value ?? moment();
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
@@ -73,7 +72,7 @@ export class ExpensesFormComponent {
     expense.monthYear = expense.monthYear.toISOString()
     expense.category = this.selected
     await this.expensesService.addNewExpense(expense);
-    this.openSnackBar('Expense added successfully');
+    this.openSnackBar('Expense Added Successfully');
     this.form.reset();
     await this.router.navigate(['/expenses']);
   }
