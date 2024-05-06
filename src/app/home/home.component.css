@@ -8,6 +8,10 @@
   gap: 3rem;
 }
 
-.chart_container div {
+app-expense-chart {
+  flex: 1
+}
+
+app-income-chart {
   flex: 1
 }
