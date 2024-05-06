@@ -1,0 +1,36 @@
+.container {
+  padding-top: 5rem;
+  background-color: #181d5d;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  width: min-content;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem
+}
+
+.header {
+  display: flex;
+  align-content: center;
+  line-height: 1;
+  font-weight: bold;
+}
+
+mat-card-content {
+  padding: 0;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
