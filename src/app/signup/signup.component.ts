@@ -5,7 +5,7 @@ import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -36,7 +36,7 @@ export class SignupComponent {
   });
   authService = inject(AuthService)
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar,private router: Router) {
   }
 
   submit() {
@@ -47,6 +47,7 @@ export class SignupComponent {
         this.form.value.password
       ).then(() => {
          this.openSnackBar('User registered successfully')
+         this.router.navigate(['/'])
       })
     }
   }
