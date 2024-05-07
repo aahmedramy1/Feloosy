@@ -9,12 +9,14 @@ import {HomeComponent} from "./home/home.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsFormComponent} from "./goals-form/goals-form.component";
 import {ReportsComponent} from "./reports/reports.component";
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: "Home"
+    title: "Home",
+   canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -29,36 +31,43 @@ export const routes: Routes = [
   {
     path: "expenses",
     component: ExpensesComponent,
-    title: "Expenses"
+    title: "Expenses",
+    canActivate: [AuthGuard]
   },
   {
     path: "expenses/new",
     component: ExpensesFormComponent,
-    title: "New Expense"
+    title: "New Expense",
+    canActivate: [AuthGuard]
   },
   {
     path: "income",
     component: IncomeComponent,
-    title: "Income"
+    title: "Income",
+    canActivate: [AuthGuard]
   },
   {
     path: "income/new",
     component: IncomeFormComponent,
-    title: "New Income"
+    title: "New Income",
+    canActivate: [AuthGuard]
   },
   {
     path: "goals",
     component: GoalsComponent,
-    title: "Goals"
+    title: "Goals",
+    canActivate: [AuthGuard]
   },
   {
     path: "goals/new",
     component: GoalsFormComponent,
-    title: "New Goal"
+    title: "New Goal",
+    canActivate: [AuthGuard]
   },
   {
     path: "reports",
     component: ReportsComponent,
-    title: "Reports"
+    title: "Reports",
+    canActivate: [AuthGuard]
   }
 ];
