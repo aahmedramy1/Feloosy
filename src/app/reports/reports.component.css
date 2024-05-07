@@ -1,0 +1,16 @@
+.container {
+  padding-top: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.chart_container {
+  display: flex;
+  gap: 6rem;
+}
+app-goals-progress {
+  flex: 1
+}
+
+app-income-expense {
+  flex: 1
+}

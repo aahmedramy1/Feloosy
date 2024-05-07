@@ -34,6 +34,7 @@ export class AuthService {
   async login(email: string, password: string): Promise<any> {
     try {
       const response = await signInWithEmailAndPassword(this.firebaseAuth, email, password);
+      console.log("response =>", response);
       this.saveUserToLocalStorage(response.user);
     } catch (error) {
       console.error('Error during login:', error);

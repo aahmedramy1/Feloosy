@@ -3,13 +3,8 @@ import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {GoalsService} from "../goals.service";
 import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderRow,
-  MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable, MatTableModule
+   MatRowDef,
+  MatTableModule
 } from "@angular/material/table";
 
 @Component({
