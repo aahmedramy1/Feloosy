@@ -42,10 +42,9 @@ export class AuthService {
     }
   }
 
-  logout(): Promise<void> {
-    return this.firebaseAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-    });
+  async logout(): Promise<void> {
+    await this.firebaseAuth.signOut();
+    localStorage.removeItem('user');
   }
 
   private saveUserToLocalStorage(user: any): void {
